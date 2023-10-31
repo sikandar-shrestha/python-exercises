@@ -147,13 +147,13 @@ len(list(its.permutations('abcd',2)))
 # 
 # -Total number of unread messages for all users
 
-# In[1]:
+# In[ ]:
 
 
 import json
 
 
-# In[2]:
+# In[ ]:
 
 
 # storing in variable for future use
@@ -222,7 +222,7 @@ for dictionary in lst_dict:
 
 # ## 3)i)Total number of active users
 
-# In[3]:
+# In[ ]:
 
 
 # Total number of active users
@@ -231,7 +231,7 @@ len(data)
 
 # # 3) ii)Number of active users
 
-# In[4]:
+# In[ ]:
 
 
 # Number of active users
@@ -242,7 +242,7 @@ for x in data:
 len(active_list)
 
 
-# In[5]:
+# In[ ]:
 
 
 # another way
@@ -255,7 +255,7 @@ count
 
 # # 3) iii) number of inactive users
 
-# In[6]:
+# In[ ]:
 
 
 # number of inactive users
@@ -266,7 +266,7 @@ for x in data:
 len(inactive_list)
 
 
-# In[7]:
+# In[ ]:
 
 
 # another way:-
@@ -279,14 +279,14 @@ count
 
 # ## 3) iv) grand total of balances for all users
 
-# In[8]:
+# In[ ]:
 
 
 # for example
 data[0]['balance']
 
 
-# In[9]:
+# In[ ]:
 
 
 # grand total of balances for all users
@@ -301,7 +301,7 @@ print("grand total of balances:",round(grand_total,2))
     
 
 
-# In[13]:
+# In[ ]:
 
 
 # another way (by importing user defined function):-
@@ -331,7 +331,7 @@ grand_total
 
 # ## 3) v) average balance per user
 
-# In[15]:
+# In[ ]:
 
 
 # average balance per user
@@ -341,7 +341,7 @@ round(average_balance,2)
 
 # ## 3) vi & vii ) user with the lowest & highest balance
 
-# In[17]:
+# In[ ]:
 
 
 ## user with the lowest balance
@@ -351,7 +351,7 @@ balance_list=[float(x['balance'].strip('$').replace(',','')) for x in data]
 balance_list
 
 
-# In[19]:
+# In[ ]:
 
 
 # another way to find balance list:-
@@ -363,7 +363,7 @@ for x in data:
 balance_list
 
 
-# In[23]:
+# In[ ]:
 
 
 min_bal=min(balance_list)
@@ -372,7 +372,7 @@ print("lowest balance:",min_bal)
 print("highest balance:",max_bal)
 
 
-# In[24]:
+# In[ ]:
 
 
 # Another way
@@ -383,7 +383,7 @@ for x in data:
         print(x['name'],clean_balance)
 
 
-# In[25]:
+# In[ ]:
 
 
 # Another way
@@ -396,7 +396,7 @@ for x in data:
 
 # ## 3) viii & ix ) Most & least  common fruit
 
-# In[26]:
+# In[ ]:
 
 
 # dictionary way
@@ -417,7 +417,7 @@ print(f' common favorite fruit: {favorite_fruit_count}')
 
 
 
-# In[27]:
+# In[ ]:
 
 
 # most common favorite fruit
@@ -425,7 +425,7 @@ most_common_favorite_fruit=max(favorite_fruit_count,key=favorite_fruit_count.get
 print(f'most common fav fruit:-- {most_common_favorite_fruit}')
 
 
-# In[28]:
+# In[ ]:
 
 
 # least most common favorite fruit
@@ -433,7 +433,7 @@ least_common_favorite_fruit=min(favorite_fruit_count,key=favorite_fruit_count.ge
 print(f'least common fav fruit:-- {least_common_favorite_fruit}')
 
 
-# In[29]:
+# In[ ]:
 
 
 # Another way:-
@@ -447,33 +447,33 @@ for x in data:
 fruit_ls
 
 
-# In[30]:
+# In[ ]:
 
 
 # turn list into set to only return unique values
 set(fruit_ls)
 
 
-# In[31]:
+# In[ ]:
 
 
 # more manual way to calculate most & least common favorite fruit
 fruit_ls.count('apple')
 
 
-# In[32]:
+# In[ ]:
 
 
 fruit_ls.count('banana')
 
 
-# In[33]:
+# In[ ]:
 
 
 fruit_ls.count('strawberry')
 
 
-# In[34]:
+# In[ ]:
 
 
 # coming soon way using pandas library
@@ -493,7 +493,7 @@ fruit_ls.value_counts()
 
 # ## 3) x ) total number of unread messages for all users
 
-# In[35]:
+# In[ ]:
 
 
 # 1st method:-
@@ -510,7 +510,7 @@ total
 
 
 
-# In[36]:
+# In[ ]:
 
 
 ## 2nd method:-
@@ -522,13 +522,13 @@ greetings = [x['greeting'] for x in data]
 sum([extract_digits(greeting) for greeting in greetings])
 
 
-# In[37]:
+# In[ ]:
 
 
 data[0]['greeting'].split(' ')
 
 
-# In[39]:
+# In[ ]:
 
 
 ## 3rd method:-
@@ -555,7 +555,7 @@ total_unread
 
 # ## BQ1) find out how many total unique tags there are for all users?
 
-# In[40]:
+# In[ ]:
 
 
 unique_tags=set()
@@ -569,7 +569,7 @@ print("total unique tags:",total_unique_tags)
 
 # ## BQ2) Display a user's name and all of their respective friends.
 
-# In[41]:
+# In[ ]:
 
 
 def users_their_friends(x_name,data):
@@ -580,24 +580,43 @@ def users_their_friends(x_name,data):
               print(x_friends)  
 
 
-# In[42]:
+# In[ ]:
 
 
 users_their_friends('Hebert Estes',data)
 
 
-# In[43]:
+# In[ ]:
 
 
 users_their_friends('Ewing Larson',data)
 
 
+# In[ ]:
 
 
 
 
 
+# In[ ]:
 
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
 
 
 
