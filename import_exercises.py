@@ -1,18 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
-import importlib
-
-
-
-
-
-import function_exercises as fa
-
-
 # ## Q1) Import and test 3 of the functions from your functions exercise file. Import each function in a different way:
 # 
 # a) Run an interactive python session and import the module. Call the is_vowel function using the . syntax.
@@ -26,28 +14,36 @@ import function_exercises as fa
 # 
 # Make sure your code that tests the function imports is run from the same directory that your functions exercise file is in.
 
-
-print(
-
-fa.calculate_tip(0.15,85)
+# In[ ]:
 
 
+import function_exercises as fe
 
 
-
-fa.get_letter_grade(90)
-
+# In[ ]:
 
 
+# once you alias a python file(*.py) import, it can only be called back by that that alias
+
+fe.calculate_tip(0.15,85)
 
 
-fa.get_letter_grade(95)
+# In[ ]:
 
 
+fe.get_letter_grade(90)
 
 
+# In[ ]:
 
-fa.get_letter_grade(50)
+
+fe.get_letter_grade(95)
+
+
+# In[ ]:
+
+
+fe.get_letter_grade(50)
 
 
 # ##Q2) Read about and use the itertools module from the python standard library to help you solve the following problems. Note: Many of these functions in this library return an object, to see the results of the function, cast this object as a list.
@@ -56,45 +52,60 @@ fa.get_letter_grade(50)
 # - How many different combinations are there of 2 letters from "abcd"?
 # - How many different permutations are there of 2 letters from "abcd"?
 
+# In[ ]:
 
 
 import itertools as its
 
 
-
+# In[ ]:
 
 
 #How many different ways can you combine a single letter from "abc" with either 1, 2, or 3?
 list(its.product('abc','123'))
 
 
+# In[ ]:
 
+
+# Another way:-
+
+list(its.product('abc',[1,2,3]))
+
+
+# In[ ]:
 
 
 len(list(its.product('abc','123')))
 
 
+# In[ ]:
 
+
+len(list(its.product('abc',[1,2,3])))
+
+
+# In[ ]:
 
 
 #How many different combinations are there of 2 letters from "abcd"?
 list(its.combinations('abcd',2))
 
 
-
+# In[ ]:
 
 
 len(list(its.combinations('abcd',2)))
 
 
-
+# In[ ]:
 
 
 #How many different permutations are there of 2 letters from "abcd"?
 list(its.permutations('abcd',2))
 
 
-
+# In[ ]:
 
 
 len(list(its.permutations('abcd',2)))
@@ -116,48 +127,111 @@ len(list(its.permutations('abcd',2)))
 # 
 # 
 # 
-# Total number of users
+# -Total number of users
 # 
-# Number of active users
+# -Number of active users
 # 
-# Number of inactive users
+# -Number of inactive users
 # 
-# Grand total of balances for all users
+# -Grand total of balances for all users
 # 
-# Average balance per user
+# -Average balance per user
 # 
-# User with the lowest balance
+# -User with the lowest balance
 # 
-# User with the highest balance
+# -User with the highest balance
 # 
-# Most common favorite fruit
+# -Most common favorite fruit
 # 
-# Least most common favorite fruit
+# -Least most common favorite fruit
 # 
-# Total number of unread messages for all users
+# -Total number of unread messages for all users
 
-
-
-
-import json
-json.load(open('profiles.json'))
-
-
-
+# In[1]:
 
 
 import json
 
-# Load the data from the JSON file
+
+# In[2]:
+
+
+# storing in variable for future use
+
+data=json.load(open('profiles.json'))
+data
+
+
+# In[ ]:
+
+
+# Another way to Load the data from the JSON file
+'''
 with open('profiles.json', 'r') as file:  # r=read mode
     data = json.load(file)
+'''
 
+# your code should produce a list of dictionaries. Using this data, write some code that calculates and outputs the 
+# following information:
+
+data[0]
+
+
+
+
+# In[ ]:
+
+
+# how to access a list
+my_list=[1,2,3,4]
+
+# subsetting only 1st to 3rd values non-inclusive
+my_list[0:2]
+
+
+# In[ ]:
+
+
+# how to access a dictionary
+my_dict={'a':0,'b':23,'c':4}
+
+# indexing by the key
+my_dict['b']
+
+
+# In[ ]:
+
+
+# access a list of dictionaries
+lst_dict = [{'name':'Mark', 'age':29}, {'name':'Eliza Thronberry', 'age':34}]
+
+# only returns first dictionary
+# to access mulitple need to use
+# a control structure to iterate 
+# over the dictionaires
+lst_dict[0]
+
+
+# In[ ]:
+
+
+# now i can get separate dicitonaries and access their elements individiually
+for dictionary in lst_dict:
+    print(dictionary['name'], dictionary['age'])
+
+
+# ## 3)i)Total number of active users
+
+# In[3]:
 
 
 # Total number of active users
 len(data)
 
 
+# # 3) ii)Number of active users
+
+# In[4]:
 
 
 # Number of active users
@@ -168,7 +242,20 @@ for x in data:
 len(active_list)
 
 
+# In[5]:
 
+
+# another way
+count=0
+for x in data:
+    if x['isActive']==True:
+        count +=1
+count
+
+
+# # 3) iii) number of inactive users
+
+# In[6]:
 
 
 # number of inactive users
@@ -179,70 +266,140 @@ for x in data:
 len(inactive_list)
 
 
+# In[7]:
 
+
+# another way:-
+count=0
+for x in data:
+    if x['isActive']==False:
+        count +=1
+count
+
+
+# ## 3) iv) grand total of balances for all users
+
+# In[8]:
+
+
+# for example
+data[0]['balance']
+
+
+# In[9]:
 
 
 # grand total of balances for all users
+# 1st method (by using string methods):-
 
-total_bal=0
+grand_total=0
 for x in data:
-    bal=float(x["balance"].replace('$','').replace(',',''))
-    total_bal +=bal
+    balance=float(x["balance"].replace('$','').replace(',','')) # casting to float to keep decimal precision
+    grand_total +=balance
 
-(round(total_bal,2))
+print("grand total of balances:",round(grand_total,2))
     
 
 
+# In[13]:
 
+
+# another way (by importing user defined function):-
+
+import importlib # make adjustments to functions without restarting kernel
+import function_exercises as f
+
+# just to make adjustments to my function without restarting kernel
+importlib.reload(f)
+
+grand_total = 0
+
+for x in data:
+    # utilizing pre defined functions
+    grand_total += f.handle_commas(x['balance'].strip('$'))
+    
+grand_total
+
+
+
+
+
+
+
+
+
+
+# ## 3) v) average balance per user
+
+# In[15]:
 
 
 # average balance per user
-average_balance=total_bal/len(data)
-average_balance
+average_balance=grand_total/len(data)
+round(average_balance,2)
 
 
+# ## 3) vi & vii ) user with the lowest & highest balance
+
+# In[17]:
 
 
+## user with the lowest balance
 
-# user with the lowest balance
-
-def handle_balance(s):
-    return float(s.replace(',', '').strip('$'))
-
-user_with_the_lowest_balance = data[0]['balance']
-for x in data[1:]:
-    if handle_balance(x['balance']) < handle_balance(user_with_the_lowest_balance):
-         user_with_the_lowest_balance = x['balance']
-user_with_the_lowest_balance
+# create a list of all balaces
+balance_list=[float(x['balance'].strip('$').replace(',','')) for x in data]
+balance_list
 
 
+# In[19]:
 
 
+# another way to find balance list:-
+
+balance_list=[]
+for x in data:
+    bal=float(x["balance"].strip("$").replace(",",""))
+    balance_list.append(bal)
+balance_list
 
 
-
-#user with the highest balance
-
-def handle_balance(s):
-    return float(s.replace(',', '').strip('$'))
-
-user_with_the_highest_balance = data[0]['balance']
-for x in data[1:]:
-    if handle_balance(x['balance']) > handle_balance(user_with_the_lowest_balance):
-         user_with_the_lowest_balance = x['balance']
-user_with_the_highest_balance
+# In[23]:
 
 
+min_bal=min(balance_list)
+max_bal=max(balance_list)
+print("lowest balance:",min_bal)
+print("highest balance:",max_bal)
 
 
+# In[24]:
 
 
+# Another way
+# user with minimum balance
+for x in data:
+    clean_balance=float(x["balance"].strip('$').replace(',','')) #striping out string characters
+    if clean_balance==min_bal:
+        print(x['name'],clean_balance)
 
 
+# In[25]:
 
 
+# Another way
+# user with highest balance
+for x in data:
+    clean_balance=float(x["balance"].strip('$').replace(',','')) #striping out string characters
+    if clean_balance==max_bal:
+        print(x['name'],clean_balance)
 
-# common favorite fruit
+
+# ## 3) viii & ix ) Most & least  common fruit
+
+# In[26]:
+
+
+# dictionary way
 
 
 favorite_fruit_count = {}
@@ -260,7 +417,7 @@ print(f' common favorite fruit: {favorite_fruit_count}')
 
 
 
-
+# In[27]:
 
 
 # most common favorite fruit
@@ -268,7 +425,7 @@ most_common_favorite_fruit=max(favorite_fruit_count,key=favorite_fruit_count.get
 print(f'most common fav fruit:-- {most_common_favorite_fruit}')
 
 
-
+# In[28]:
 
 
 # least most common favorite fruit
@@ -276,10 +433,70 @@ least_common_favorite_fruit=min(favorite_fruit_count,key=favorite_fruit_count.ge
 print(f'least common fav fruit:-- {least_common_favorite_fruit}')
 
 
+# In[29]:
+
+
+# Another way:-
+# empty list to add to
+
+fruit_ls=[]
+
+for x in data:
+    
+    fruit_ls.append(x['favoriteFruit'])
+fruit_ls
+
+
+# In[30]:
+
+
+# turn list into set to only return unique values
+set(fruit_ls)
+
+
+# In[31]:
+
+
+# more manual way to calculate most & least common favorite fruit
+fruit_ls.count('apple')
+
+
+# In[32]:
+
+
+fruit_ls.count('banana')
+
+
+# In[33]:
+
+
+fruit_ls.count('strawberry')
+
+
+# In[34]:
+
+
+# coming soon way using pandas library
+import pandas as pd
+
+# converting to series
+fruit_ls = pd.Series(fruit_ls)
+
+fruit_ls.value_counts()
+
+
+# In[ ]:
 
 
 
-# total number of unread messages for all users
+
+
+# ## 3) x ) total number of unread messages for all users
+
+# In[35]:
+
+
+# 1st method:-
 total = 0
 for x in data:
     index_begin = x["greeting"].find("have")
@@ -293,10 +510,10 @@ total
 
 
 
+# In[36]:
 
 
-
-## Another way
+## 2nd method:-
 
 def extract_digits(s):
     return int("".join([c for c in s if c.isdigit()]))
@@ -305,8 +522,102 @@ greetings = [x['greeting'] for x in data]
 sum([extract_digits(greeting) for greeting in greetings])
 
 
+# In[37]:
 
 
-)
+data[0]['greeting'].split(' ')
+
+
+# In[39]:
+
+
+## 3rd method:-
+
+
+# empty var to add ints to
+total_unread = 0
+
+# looping over individual profiles
+for x in data:
+    # storing split message greeting in a variable
+    message = x['greeting'].split()
+    
+    # loop over split message and look for digits to add to total_unread
+    for word in message:
+        
+        # checking if word is a digit
+        if word.isdigit():
+            word = int(word) # casting to int for math calculations
+            total_unread += word
+            
+total_unread
+
+
+# ## BQ1) find out how many total unique tags there are for all users?
+
+# In[40]:
+
+
+unique_tags=set()
+for x in data:
+    user_tags=x.get("tags",[])
+    unique_tags.update(user_tags)
+total_unique_tags=len(unique_tags)
+print("total unique tags:",total_unique_tags)
+    
+
+
+# ## BQ2) Display a user's name and all of their respective friends.
+
+# In[41]:
+
+
+def users_their_friends(x_name,data):
+    for x in data:
+        if x.get("name")==x_name:
+            print(f"{x_name}/'s frineds:")
+            for x_friends in x.get("friends",[]):
+              print(x_friends)  
+
+
+# In[42]:
+
+
+users_their_friends('Hebert Estes',data)
+
+
+# In[43]:
+
+
+users_their_friends('Ewing Larson',data)
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
 
 
