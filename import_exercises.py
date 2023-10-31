@@ -27,7 +27,7 @@ import function_exercises as fa
 # Make sure your code that tests the function imports is run from the same directory that your functions exercise file is in.
 
 
-
+print(
 
 fa.calculate_tip(0.15,85)
 
@@ -307,6 +307,6 @@ sum([extract_digits(greeting) for greeting in greetings])
 
 
 
-
+)
 
 
