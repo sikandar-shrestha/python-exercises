@@ -14,13 +14,13 @@
 # 
 # Make sure your code that tests the function imports is run from the same directory that your functions exercise file is in.
 
-# In[ ]:
+
 
 
 import function_exercises as fe
 
 
-# In[ ]:
+
 
 
 # once you alias a python file(*.py) import, it can only be called back by that that alias
@@ -28,19 +28,19 @@ import function_exercises as fe
 fe.calculate_tip(0.15,85)
 
 
-# In[ ]:
+
 
 
 fe.get_letter_grade(90)
 
 
-# In[ ]:
+
 
 
 fe.get_letter_grade(95)
 
 
-# In[ ]:
+
 
 
 fe.get_letter_grade(50)
@@ -52,40 +52,35 @@ fe.get_letter_grade(50)
 # - How many different combinations are there of 2 letters from "abcd"?
 # - How many different permutations are there of 2 letters from "abcd"?
 
-# In[ ]:
+
 
 
 import itertools as its
 
 
-# In[ ]:
+
 
 
 #How many different ways can you combine a single letter from "abc" with either 1, 2, or 3?
 list(its.product('abc','123'))
 
 
-# In[ ]:
 
 
-# Another way:-
+
 
 list(its.product('abc',[1,2,3]))
 
 
-# In[ ]:
+
 
 
 len(list(its.product('abc','123')))
 
 
-# In[ ]:
-
 
 len(list(its.product('abc',[1,2,3])))
 
-
-# In[ ]:
 
 
 #How many different combinations are there of 2 letters from "abcd"?
@@ -105,7 +100,7 @@ len(list(its.combinations('abcd',2)))
 list(its.permutations('abcd',2))
 
 
-# In[ ]:
+
 
 
 len(list(its.permutations('abcd',2)))
@@ -147,7 +142,7 @@ len(list(its.permutations('abcd',2)))
 # 
 # -Total number of unread messages for all users
 
-# In[ ]:
+
 
 
 import json
@@ -447,33 +442,32 @@ for x in data:
 fruit_ls
 
 
-# In[ ]:
+
 
 
 # turn list into set to only return unique values
 set(fruit_ls)
 
 
-# In[ ]:
 
 
 # more manual way to calculate most & least common favorite fruit
 fruit_ls.count('apple')
 
 
-# In[ ]:
+
 
 
 fruit_ls.count('banana')
 
 
-# In[ ]:
+
 
 
 fruit_ls.count('strawberry')
 
 
-# In[ ]:
+
 
 
 # coming soon way using pandas library
@@ -485,7 +479,7 @@ fruit_ls = pd.Series(fruit_ls)
 fruit_ls.value_counts()
 
 
-# In[ ]:
+
 
 
 
@@ -493,7 +487,7 @@ fruit_ls.value_counts()
 
 # ## 3) x ) total number of unread messages for all users
 
-# In[ ]:
+
 
 
 # 1st method:-
@@ -510,7 +504,7 @@ total
 
 
 
-# In[ ]:
+
 
 
 ## 2nd method:-
@@ -522,13 +516,13 @@ greetings = [x['greeting'] for x in data]
 sum([extract_digits(greeting) for greeting in greetings])
 
 
-# In[ ]:
+
 
 
 data[0]['greeting'].split(' ')
 
 
-# In[ ]:
+
 
 
 ## 3rd method:-
@@ -569,7 +563,7 @@ print("total unique tags:",total_unique_tags)
 
 # ## BQ2) Display a user's name and all of their respective friends.
 
-# In[ ]:
+
 
 
 def users_their_friends(x_name,data):
@@ -580,43 +574,43 @@ def users_their_friends(x_name,data):
               print(x_friends)  
 
 
-# In[ ]:
+
 
 
 users_their_friends('Hebert Estes',data)
 
 
-# In[ ]:
+
 
 
 users_their_friends('Ewing Larson',data)
 
 
-# In[ ]:
 
 
 
 
 
-# In[ ]:
 
 
 
 
 
-# In[ ]:
 
 
 
 
 
-# In[ ]:
 
 
 
 
 
-# In[ ]:
+
+
+
+
+
 
 
 
